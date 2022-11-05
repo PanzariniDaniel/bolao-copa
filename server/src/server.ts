@@ -1,5 +1,6 @@
 import Fastify from "fastify";
 import cors from "@fastify/cors";
+import fastifyJwt from "@fastify/jwt";
 
 import { poolRoutes } from "./routes/pool";
 import { userRoutes } from "./routes/user";
@@ -11,6 +12,7 @@ async function bootstrap() {
   const fastify = Fastify({ logger: true });
 
   await fastify.register(cors, { origin: true });
+  await fastify.register(fastifyJwt, { secret: String(process.env.JWT_SECRET) });
 
   await fastify.register(poolRoutes);
   await fastify.register(userRoutes);
