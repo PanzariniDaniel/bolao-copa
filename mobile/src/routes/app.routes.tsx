@@ -43,15 +43,21 @@ export function AppRoutes() {
         }}
       />
       <Screen
-        name="pool"
+        name="pools"
         component={Pools}
         options={{
           tabBarIcon: ({ color }) => <SoccerBall color={color} size={size} />,
           tabBarLabel: "Meus Bolões",
         }}
       />
-      {/* <Screen name="find" component={Find} />
-      <Screen name="sigIn" component={SignIn} /> */}
+      <Screen
+        name="find"
+        component={Find}
+        options={{
+          tabBarButton: () => null,
+        }}
+      />
+      {/* <Screen name="sigIn" component={SignIn} /> */}
     </Navigator>
   );
 }
