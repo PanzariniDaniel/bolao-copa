@@ -27,13 +27,12 @@ export function Find() {
 
       await api.post("/pools/join", { code });
 
+      navigate("pools");
       return toast.show({
         title: "Você entrou no bolão com sucesso.",
         placement: "top",
         bgColor: "green.500",
       });
-
-      navigate("pools");
     } catch (error) {
       console.log(error);
       setIsLoading(false);
@@ -57,6 +56,8 @@ export function Find() {
         placement: "top",
         bgColor: "red.500",
       });
+    } finally {
+      setIsLoading(false);
     }
   }
 
