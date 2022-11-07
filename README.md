@@ -19,7 +19,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-Projeto resultado do Next Level Week 10 trilha Ignite. <br>
+Projeto resultado do Next Level Week 10 trilha Ignite pela [Rocketseat](https://www.rocketseat.com.br/). <br>
 O bolão da copa é uma forma divertida de realizar os palpites dos jogos da copa com os amigos.
 
 ## :fire: Como usar
@@ -70,6 +70,16 @@ O bolão da copa é uma forma divertida de realizar os palpites dos jogos da cop
   # Inicie o projeto mobile
   $ npm start
 ```
+
+## :hand: Atenção
+
+- Lembre-se de criar as variáveis de ambiente como nos exemplos de cada projeto;
+- Para rodar o projeto web pode ser que seja preciso comentar o trecho host (como no exemplo abaixo) dentro do arquivo server/src/server.ts
+- Para rodar o projeto mobile não precisa comentar nada
+```sh
+  await fastify.listen({ port: 3333, /**host: "0.0.0.0"**/ });
+```
+
 
 ## 🤔 Como contribuir
 
