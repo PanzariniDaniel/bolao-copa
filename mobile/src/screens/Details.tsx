@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useToast, VStack } from "native-base";
+import { HStack, useToast, VStack } from "native-base";
 import { useRoute } from "@react-navigation/native";
 
 import { Header } from "../components/Header";
@@ -8,6 +8,7 @@ import { api } from "../services/api";
 import { PoolCardProps } from "../components/PoolCard";
 import { PoolHeader } from "../components/PoolHeader";
 import { EmptyMyPoolList } from "../components/EmptyMyPoolList";
+import { Option } from "../components/Option";
 
 interface RouteParams {
   id: string;
@@ -22,6 +23,9 @@ export function Details() {
   const [isLoading, setIsLoading] = useState(true);
   const [poolDetails, setPoolDetails] = useState<PoolCardProps>(
     {} as PoolCardProps
+  );
+  const [optionSelected, setOptionSelected] = useState<"guesses" | "ranking">(
+    "guesses"
   );
 
   async function fetchPoolDetails() {
@@ -55,6 +59,18 @@ export function Details() {
       {poolDetails._count?.participants > 0 ? (
         <VStack px={5} flex={1}>
           <PoolHeader data={poolDetails} />
+          <HStack bgColor="gray.800" px={1} rounded="sm" mb={5}>
+            <Option
+              title="Seus palpites"
+              isSelected={optionSelected === "guesses"}
+              onPress={() => setOptionSelected("guesses")}
+            />
+            <Option
+              title="Ranking do grupo"
+              isSelected={optionSelected === "ranking"}
+              onPress={() => setOptionSelected("ranking")}
+            />
+          </HStack>
         </VStack>
       ) : (
         <EmptyMyPoolList code={poolDetails.code} />
